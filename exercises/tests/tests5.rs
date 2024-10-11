@@ -22,7 +22,6 @@
 // Execute `rustlings hint tests5` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
 
 /// # Safety
 ///
@@ -39,7 +38,12 @@ unsafe fn modify_by_address(address: usize) {
 #[cfg(test)]
 mod tests {
     use super::*;
-
+    #[cfg(test)]
+    pub fn modify_by_address(addr: usize) {
+        unsafe {
+            *(addr as *mut u32) = 0xAABBCCDD;
+        }
+    }
     #[test]
     fn test_success() {
         let mut t: u32 = 0x12345678;
